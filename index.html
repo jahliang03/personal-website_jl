@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title> Jasmine Liang</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Include a sitewide CSS file for consistent styling across the site -->
+	<link rel="stylesheet" type="text/css" href="css/site.css">
+	<!-- Experiment-specifc CSS file for any special styling of this particular page -->
+	<link rel="stylesheet" type="text/css" href="css/homepage.css">
+
+    
+	<!-- Link to javascript file - DEFER waits until all elements are rendered -->
+	<script type="text/javascript" src="./js/experiment.js"></script>
+    <!-- Add this inside your <head> -->
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+			<h1>
+				<div id="title"><h1><b>Jasmine Liang</b></h1></div>
+			</h1>
+
+			<!-- Side-by-side image and text layout -->
+			<div class="flex-row">
+				<!-- Left: Image box -->
+				<div class="minor-section image-wrapper">
+					<img class="my-photo" src="./img/jasmine.jpeg">
+				</div>
+
+				<!-- Right: Text content (About Me + Links) -->
+				<div class="text-column">
+					<div class="minor-section text-wrapper">
+						<div id="text"></div>
+						<h2><b>About Me:</b></h2>
+						<p>Hi! My name is Jasmine and I'm a 4th year Computer Science Game Design student at UCSC! I'm also minoring in Technology Information Management! Welcome to my personal website!!</p>
+					</div>
+
+					<div class="minor-section text-wrapper">
+						<div id="text"></div>
+						<h2><b>Let's Connect!</b></h2>
+						<ul>
+							<li><a href="./experiment1/index.html">Experiment 1</a></li>
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<style>
+				body {
+					font-family: 'Oleo Script', monospace;
+					background-color: #F5F5F5;
+				}
+
+				#title {
+					font-family: 'Courier New', monospace;
+					font-weight: bold;
+					text-align: center;
+				}
+
+				#text {
+					font-family: 'Courier New', monospace;
+				}
+
+				.flex-row {
+					display: flex;
+					justify-content: flex-start;
+					align-items: flex-start;
+					flex-wrap: wrap;
+					gap: 2em;
+				}
+
+				.text-column {
+					display: flex;
+					flex-direction: column;
+					gap: 1.5em;
+					max-width: 800px; /* increased from 600px */
+					flex: 1;
+				}
+
+				.text-wrapper {
+					width: 100%;
+					font-family: 'Courier New', monospace;
+					border: 1px solid #e6ecca;
+					padding: 1.2em;
+					border-radius: 10px;
+					background-color: #fefefe;
+					box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
+				}
+
+
+				.image-wrapper {
+					background-color: #ADD198;
+					border: 1px solid #fffcd8;
+					border-radius: 50px;
+					box-shadow: 1px 1px 4px rgba(255, 155, 218, 0.08);
+					width: 350px;
+					height: auto;
+					padding: 0.5em;
+				}
+
+				.my-photo {
+					width: 100%;
+					height: auto;
+					border-radius: 50px;
+					display: block;
+				}
+			</style>
+		</section>
+
+		<nav id="links">
+			<!-- Put links to experiments here. -->
+		</nav>
+	</main>
+</body>
+</html>
