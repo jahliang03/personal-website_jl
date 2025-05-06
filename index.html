@@ -12,6 +12,11 @@
 	<link rel="stylesheet" type="text/css" href="css/site.css">
 	<!-- Experiment-specifc CSS file for any special styling of this particular page -->
 	<link rel="stylesheet" type="text/css" href="css/homepage.css">
+    <!-- Add inside your <head> or before </body> -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
 
     
 	<!-- Link to javascript file - DEFER waits until all elements are rendered -->
@@ -27,47 +32,72 @@
 			<h1>
 				<div id="title"><h1><b>Jasmine Liang</b></h1></div>
 			</h1>
+            <div id="my-react-root"></div>
+
 
 			<!-- Side-by-side image and text layout -->
 			<div class="flex-row">
 				<!-- Left: Image box -->
 				<div class="minor-section image-wrapper">
-					<img class="my-photo" src="./img/jasmine.jpeg">
+					<img class="my-photo" src="./assets/jasmine.jpeg">
 				</div>
+                <script type="text/babel">
+                    function App() {
+                      return <h1></h1>;
+                    }
+                  
+                    const root = ReactDOM.createRoot(document.getElementById('my-react-root'));
+                    root.render(<App />);
+                    
+                </script>
+                  
 
 				<!-- Right: Text content (About Me + Links) -->
 				<div class="text-column">
 					<div class="minor-section text-wrapper">
+                        <!--<img class="my-photo" src="./assets/jasmine.jpeg">-->
 						<div id="text"></div>
 						<h2><b>About Me:</b></h2>
-						<p>Hi! My name is Jasmine and I'm a 4th year Computer Science Game Design student at UCSC! I'm also minoring in Technology Information Management! Welcome to my personal website!!</p>
+						<p>Hi! My name is Jasmine and I'm a 4th year Computer Science Game Design student at UCSC!
+                            I'm also minoring in Technology Information Management! 
+                            I’m passionate about web development, product management, and UX design.</p>
 					</div>
 
 					<div class="minor-section text-wrapper">
 						<div id="text"></div>
 						<h2><b>Let's Connect!</b></h2>
 						<ul>
-							<li><a href="./experiment1/index.html">Experiment 1</a></li>
-							
+							<li><a href="https://www.linkedin.com/in/jasmine-liang-1b08b6221/">LinkedIn</a></li>
+						</ul>
+						<ul>
+							<li><a href="https://github.com/jahliang03/">Github</a></li>
+						</ul>
+						<ul>
+							<li><a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new/">Email</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 
+
 			<style>
 				body {
-					font-family: 'Oleo Script', monospace;
+					font-family: 'Oleo Script', cursive;
 					background-color: #F5F5F5;
 				}
 
 				#title {
-					font-family: 'Courier New', monospace;
+					font-family: 'Oleo Script', cursive;
 					font-weight: bold;
 					text-align: center;
+                    color:#ADD198;
+                    outline-color:#4A8028;
+                    stroke-width: 3;
+                    -webkit-text-stroke-color:#4A8028;;
 				}
 
 				#text {
-					font-family: 'Courier New', monospace;
+					font-family: 'Oleo Script', cursive;
 				}
 
 				.flex-row {
