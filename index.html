@@ -1,104 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- This title is used for tabs and bookmarks -->
-	<title> Jasmine Liang</title>
-
-	<!-- Use UTF character set, a good idea with any webpage -->
+	<title>Jasmine Liang</title>
 	<meta charset="UTF-8" />
-	<!-- Set viewport so page remains consistently scaled w narrow devices -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- Include a sitewide CSS file for consistent styling across the site -->
+
 	<link rel="stylesheet" type="text/css" href="css/site.css">
-	<!-- Experiment-specifc CSS file for any special styling of this particular page -->
 	<link rel="stylesheet" type="text/css" href="css/homepage.css">
-    <!-- Add inside your <head> or before </body> -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
 
-
-    
-	<!-- Link to javascript file - DEFER waits until all elements are rendered -->
-	<script type="text/javascript" src="./js/experiment.js"></script>
-    <!-- Add this inside your <head> -->
-    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
-
+	<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	<script type="text/javascript" src="./js/experiment.js" defer></script>
 </head>
+
 <body>
-	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
-			<h1>
-				<div id="title"><h1><b>Jasmine Liang</b></h1></div>
-			</h1>
-            <div id="my-react-root"></div>
+			<div id="title"><h1><b>Jasmine Liang</b></h1></div>
+			<div id="my-react-root"></div>
 
-
-			<!-- Side-by-side image and text layout -->
 			<div class="flex-row">
-				<!-- Left: Image box -->
+				<!-- Left: Image -->
 				<div class="minor-section image-wrapper">
-					<img class="my-photo" src="./assets/jasmine.jpeg">
+					<img class="my-photo" src="./assets/jasmine.jpeg" alt="Jasmine Liang">
 				</div>
-                <script type="text/babel">
-                    function App() {
-                      return <h1></h1>;
-                    }
-                  
-                    const root = ReactDOM.createRoot(document.getElementById('my-react-root'));
-                    root.render(<App />);
-                    
-                </script>
-                  
 
-				<!-- Right: Text content (About Me + Links) -->
+				<!-- Right: Text content -->
 				<div class="text-column">
-					<div class="minor-section text-wrapper">
-                        <!--<img class="my-photo" src="./assets/jasmine.jpeg">-->
-						<div id="text"></div>
+					<div class="minor-section text-wrapper" id="about">
 						<h2><b>About Me:</b></h2>
-						<p>Hi! My name is Jasmine and I'm a 4th year Computer Science Game Design student at UCSC!
-                            I'm also minoring in Technology Information Management! 
-                            I’m passionate about web development, product management, and UX design.</p>
+						<p>Hello! I’m Jasmine Liang and I'm a recent graduate from the University of California, Santa Cruz! I have a Bachelor of Science in 
+							Computer Science: Game Design and a minor in Technology and Information Management. I’m passionate about web development, product management, and UX design. 
+							I’ve built interactive systems in Unity, led frontend projects using Flutter and React, and developed data visualization tools during my internship experiences.
+							
+							With experience across development, data analytics, and project management, I’m excited to keep learning and creating thoughtful, interactive tech. Click through my website to learn more about 
+							me and some fun projects that I've worked on both with code and without!</p>
+							
 					</div>
 
-					<div class="minor-section text-wrapper">
-						<div id="text"></div>
+					<div class="minor-section text-wrapper" id="socials">
 						<h2><b>Let's Connect!</b></h2>
-						<ul>
-							<li><a href="https://www.linkedin.com/in/jasmine-liang-1b08b6221/">LinkedIn</a></li>
-						</ul>
-						<ul>
-							<li><a href="https://github.com/jahliang03/">Github</a></li>
-						</ul>
-						<ul>
-							<li><a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=new/">Email</a></li>
-						</ul>
+						<div class="link-buttons">
+						  <a href="https://www.linkedin.com/in/jasmine-liang-1b08b6221/" target="_blank" class="link-btn">LinkedIn</a>
+						  <a href="https://github.com/jahliang03/" target="_blank" class="link-btn">GitHub</a>
+						  <a href="mailto:jahliang03@gmail.com" class="link-btn">Email</a>
+						</div>
+					</div>
+					  
+
+					<div class="minor-section text-wrapper" id="projects">
+						<h2><b>Projects</b></h2>
+						<p>Coming soon!</p>
+					</div>
+
+					<div class="minor-section text-wrapper" id="fun">
+						<h2><b>Fun Things</b></h2>
+						<p>Coming soon!</p>
 					</div>
 				</div>
 			</div>
-
 
 			<style>
 				body {
 					font-family: 'Oleo Script', cursive;
 					background-color: #F5F5F5;
+					scroll-behavior: smooth;
 				}
 
 				#title {
 					font-family: 'Oleo Script', cursive;
 					font-weight: bold;
 					text-align: center;
-                    color:#ADD198;
-                    outline-color:#4A8028;
-                    stroke-width: 3;
-                    -webkit-text-stroke-color:#4A8028;;
+					color: #ADD198;
+					-webkit-text-stroke: 1px #4A8028;
+				}
+				#title {
+					font-family: 'Oleo Script', cursive;
+					font-weight: bold;
+					text-align: center;
+					color: #ADD198;
+					-webkit-text-stroke: 1px #4A8028;
+					margin-bottom: 1em;
 				}
 
-				#text {
-					font-family: 'Oleo Script', cursive;
-				}
 
 				.flex-row {
 					display: flex;
@@ -112,7 +98,7 @@
 					display: flex;
 					flex-direction: column;
 					gap: 1.5em;
-					max-width: 800px; /* increased from 600px */
+					max-width: 800px;
 					flex: 1;
 				}
 
@@ -125,7 +111,6 @@
 					background-color: #fefefe;
 					box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
 				}
-
 
 				.image-wrapper {
 					background-color: #ADD198;
@@ -143,6 +128,31 @@
 					border-radius: 50px;
 					display: block;
 				}
+
+				.link-buttons {
+					display: flex;
+					gap: 1em;
+					flex-wrap: wrap;
+					margin-top: 0.5em;
+				}
+				
+				.link-btn {
+					text-decoration: none;
+					background-color: #e6d6f2;
+					color: #4A3F63;
+					padding: 0.6em 1.2em;
+					border-radius: 10px;
+					font-family: 'Courier New', monospace;
+					font-weight: bold;
+					box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+					transition: background-color 0.3s ease, transform 0.2s ease;
+				}
+				
+				.link-btn:hover {
+					background-color: #d4c1e6;
+					transform: scale(1.05);
+				}
+  
 			</style>
 		</section>
 
@@ -150,5 +160,50 @@
 			<!-- Put links to experiments here. -->
 		</nav>
 	</main>
+
+	<!-- React Navbar Script -->
+	<script type="text/babel">
+		function Navbar() {
+			const navStyle = {
+				display: 'flex',
+				justifyContent: 'center',
+				gap: '2em',
+				padding: '1em',
+				backgroundColor: '#e6d6f2',
+				borderRadius: '10px',
+				marginBottom: '2em',
+				fontWeight: 'bold',
+				fontSize: '1.1em',
+				fontFamily: "'Oleo Script', cursive",
+				boxShadow: '1px 1px 6px rgba(0, 0, 0, 0.05)', // add this line
+
+			};
+
+			const linkStyle = {
+				color: '#4A3F63',
+				textDecoration: 'none',
+			};
+
+			return (
+				<nav style={navStyle}>
+					<a href="#about" style={linkStyle}>About Me</a>
+					<a href="#socials" style={linkStyle}>Socials</a>
+					<a href="#projects" style={linkStyle}>Projects</a>
+					<a href="#fun" style={linkStyle}>Fun Things</a>
+				</nav>
+			);
+		}
+
+		function App() {
+			return (
+				<div>
+					<Navbar />
+				</div>
+			);
+		}
+
+		const root = ReactDOM.createRoot(document.getElementById('my-react-root'));
+		root.render(<App />);
+	</script>
 </body>
 </html>
