@@ -152,6 +152,14 @@
 					background-color: #d4c1e6;
 					transform: scale(1.05);
 				}
+				
+
+				.nav-btn:hover {
+					background-color: #f2e8fb;
+					transform: scale(1.05);
+				}
+
+				
   
 			</style>
 		</section>
@@ -164,46 +172,50 @@
 	<!-- React Navbar Script -->
 	<script type="text/babel">
 		function Navbar() {
-			const navStyle = {
-				display: 'flex',
-				justifyContent: 'center',
-				gap: '2em',
-				padding: '1em',
-				backgroundColor: '#e6d6f2',
-				borderRadius: '10px',
-				marginBottom: '2em',
-				fontWeight: 'bold',
-				fontSize: '1.1em',
-				fontFamily: "'Oleo Script', cursive",
-				boxShadow: '1px 1px 6px rgba(0, 0, 0, 0.05)', // add this line
-
-			};
-
-			const linkStyle = {
-				color: '#4A3F63',
-				textDecoration: 'none',
-			};
-
-			return (
-				<nav style={navStyle}>
-					<a href="#about" style={linkStyle}>About Me</a>
-					<a href="#socials" style={linkStyle}>Socials</a>
-					<a href="#projects" style={linkStyle}>Projects</a>
-					<a href="#fun" style={linkStyle}>Fun Things</a>
-				</nav>
-			);
+		  const navStyle = {
+			display: 'flex',
+			justifyContent: 'center',
+			gap: '1em',
+			padding: '1em',
+			backgroundColor: '#e6d6f2',
+			borderRadius: '10px',
+			marginBottom: '2em',
+			fontWeight: 'bold',
+			fontSize: '1.1em',
+			fontFamily: "'Oleo Script', cursive",
+			boxShadow: '1px 1px 6px rgba(0, 0, 0, 0.05)',
+		  };
+	  
+		  const buttonStyle = {
+			backgroundColor: '#e6d6f2',
+			color: '#4A3F63',
+			border: '2px solid #c9b8e4',
+			borderRadius: '10px',
+			padding: '0.5em 1em',
+			fontFamily: "'Courier New', monospace",
+			fontWeight: 'bold',
+			cursor: 'pointer',
+			transition: 'background-color 0.3s ease, transform 0.2s ease',
+		  };
+	  
+		  const handleNav = (id) => {
+			const target = document.getElementById(id);
+			if (target) target.scrollIntoView({ behavior: 'smooth' });
+		  };
+	  
+		  return (
+			<nav style={navStyle}>
+			  <button className="nav-btn" style={buttonStyle} onClick={() => handleNav('about')}>About&nbsp;Me</button>
+			  <button className="nav-btn" style={buttonStyle} onClick={() => handleNav('socials')}>Socials</button>
+			  <button className="nav-btn" style={buttonStyle} onClick={() => handleNav('projects')}>Projects</button>
+			  <button className="nav-btn" style={buttonStyle} onClick={() => handleNav('fun')}>Fun&nbsp;Things</button>
+			</nav>
+		  );
 		}
-
-		function App() {
-			return (
-				<div>
-					<Navbar />
-				</div>
-			);
-		}
-
+	  
 		const root = ReactDOM.createRoot(document.getElementById('my-react-root'));
-		root.render(<App />);
-	</script>
+		root.render(<Navbar />);
+	  </script>
+	  
 </body>
 </html>
