@@ -17,10 +17,15 @@
 
 <body>
 	<main id="content">
-		<section>
-			<div id="title"><h1><b>Jasmine Liang</b></h1></div>
-			<div id="my-react-root"></div>
-
+		<section style="position: relative;">
+			<div style="position: relative; z-index: 1;">
+				<div id="title"><h1><b>Jasmine Liang</b></h1></div>
+			</div>
+			<div style="position: relative; z-index: 0;">
+				<div id="my-react-root"></div>
+			</div>
+		
+			
 			<div class="flex-row">
 				<!-- Left: Image -->
 				<div class="minor-section image-wrapper">
@@ -72,18 +77,19 @@
 				#title {
 					font-family: 'Oleo Script', cursive;
 					font-weight: bold;
-					text-align: center;
+					text-align: left;
 					color: #ADD198;
 					-webkit-text-stroke: 1px #4A8028;
+					font-size: 2rem;
+					position: absolute ;
+					top: -1.2em;
+					left: 8em;
+					transform: translateX(-50%);
+					z-index: 10; /* This must be higher than the navbar’s z-index */
+					pointer-events: none;
+					margin: 0;
 				}
-				#title {
-					font-family: 'Oleo Script', cursive;
-					font-weight: bold;
-					text-align: center;
-					color: #ADD198;
-					-webkit-text-stroke: 1px #4A8028;
-					margin-bottom: 1em;
-				}
+
 
 
 				.flex-row {
@@ -179,11 +185,13 @@
 			padding: '1em',
 			backgroundColor: '#e6d6f2',
 			borderRadius: '10px',
+			marginTop: '2em', // to leave space for large title
 			marginBottom: '2em',
 			fontWeight: 'bold',
 			fontSize: '1.1em',
 			fontFamily: "'Oleo Script', cursive",
 			boxShadow: '1px 1px 6px rgba(0, 0, 0, 0.05)',
+
 		  };
 	  
 		  const buttonStyle = {
