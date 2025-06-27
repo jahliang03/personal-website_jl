@@ -38,36 +38,87 @@
 						<h2><b>About Me:</b></h2>
 						<p>Hello! I’m Jasmine Liang and I'm a recent graduate from the University of California, Santa Cruz! I have a Bachelor of Science in 
 							Computer Science: Game Design and a minor in Technology and Information Management. I’m passionate about web development, product management, and UX design. 
-							I’ve built interactive systems in Unity, led frontend projects using Flutter and React, and developed data visualization tools during my academic and internship experiences.
+							I’ve built interactive systems in Unity, led frontend projects using Flutter and React, and developed data visualization tools during my internship experiences.
 							
 							With experience across development, data analytics, and project management, I’m excited to keep learning and creating thoughtful, interactive tech. Click through my website to learn more about 
 							me and some fun projects that I've worked on both with code and without!
 
-							With my free time I like to draw, paint (I bascially love to do anything creative), gym, go cafe hopping, make matcha, and watch thriller/horror movies! 
+							With my free time I like to draw, paint (I bascially love to do anything creative), gmy go cafe hopping, make matcha, and watch thriller/horror movies! 
 	
 						</p>
 							
 					</div>
 
 					<div class="minor-section text-wrapper" id="socials">
-						<h2><b>Let's Connect!</b></h2>
+						<h2><b>Socials: Let's Connect!</b></h2>
 						<div class="link-buttons">
 						  <a href="https://www.linkedin.com/in/jasmine-liang-1b08b6221/" target="_blank" class="link-btn">LinkedIn</a>
 						  <a href="https://github.com/jahliang03/" target="_blank" class="link-btn">GitHub</a>
 						  <a href="mailto:jahliang03@gmail.com" class="link-btn">Email</a>
 						</div>
 					</div>
-					  
-
+					
 					<div class="minor-section text-wrapper" id="projects">
 						<h2><b>Projects</b></h2>
-						<p>Coming soon!</p>
+						<div class="project-grid">
+						  <div class="project-card">
+							<img src="./assets/food-rescue.png" alt="Food Rescue App" class="project-img">
+							<div class="project-content">
+							  <h3>🍽️ Food Rescue App</h3>
+							  <p>Helps redistribute surplus food across campus using Flutter + Firebase.</p>
+							  <a href="https://github.com/jahliang03/food-rescue-app" target="_blank" class="link-btn">View Project</a>
+							</div>
+						  </div>
+					  
+						  <div class="project-card">
+							<img src="./assets/living-impressions.png" alt="Living Impressions" class="project-img">
+							<div class="project-content">
+							  <h3>🌿 Living Impressions</h3>
+							  <p>Beach-themed p5.js generative art with noise animation and interaction.</p>
+							  <a href="https://yourlink.com/living-impressions" target="_blank" class="link-btn">View Project</a>
+							</div>
+						  </div>
+					  
+						  <div class="project-card">
+							<img src="./assets/seasonal-worlds.png" alt="Seasonal Grid Worlds" class="project-img">
+							<div class="project-content">
+							  <h3>🗺️ Seasonal Grid Worlds</h3>
+							  <p>Procedural overworld + dungeon generator with dynamic tilemaps and lighting.</p>
+							  <a href="https://yourlink.com/seasonal-grids" target="_blank" class="link-btn">View Project</a>
+							</div>
+						  </div>
+					  
+						  <div class="project-card">
+							<img src="./assets/stanford-audit.png" alt="Stanford Audit Tool" class="project-img">
+							<div class="project-content">
+							  <h3>📊 Stanford Audit Tool</h3>
+							  <p>Data dashboards built with Python & Plotly to visualize space usage at scale.</p>
+							  <a href="https://yourlink.com/stanford-space-audit" target="_blank" class="link-btn">View Project</a>
+							</div>
+						  </div>
+						</div>
 					</div>
+					  
 
 					<div class="minor-section text-wrapper" id="fun">
 						<h2><b>Fun Things</b></h2>
-						<p>Coming soon!</p>
+					  
+						<details class="fun-dropdown">
+						  <summary>🎨 Art & Doodles</summary>
+						  <p>I love to draw and paint during my free time — mostly digital art or sketchbook doodles. I find inspiration in dreamy aesthetics, characters, and daily life!</p>
+						</details>
+					  
+						<details class="fun-dropdown">
+						  <summary>🍵 Cafe Hopping & Matcha Making</summary>
+						  <p>Exploring cafes is my weekend ritual! I also enjoy making homemade matcha drinks and experimenting with latte art at home.</p>
+						</details>
+					  
+						<details class="fun-dropdown">
+						  <summary>🎥 Favorite Thrillers</summary>
+						  <p>I love psychological thrillers and horror films. Some favorites include *Perfect Blue*, *Get Out*, and *The Invisible Man*.</p>
+						</details>
 					</div>
+					  
 				</div>
 			</div>
 
@@ -93,6 +144,8 @@
 					pointer-events: none;
 					margin: 0;
 				}
+
+
 
 				.flex-row {
 					display: flex;
@@ -167,7 +220,80 @@
 					transform: scale(1.05);
 				}
 
-				
+				.project-grid {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+					gap: 2em;
+					margin-top: 1em;
+				}
+
+				.project-card {
+					display: flex;
+					flex-direction: row;
+					background-color: #fefefe;
+					border: 1px solid #e6ecca;
+					border-radius: 12px;
+					box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.05);
+					overflow: hidden;
+					height: 180px;
+				}
+
+				.project-img {
+					width: 40%;
+					height: 100%;
+					object-fit: cover;
+				}
+
+				.project-content {
+					padding: 1em;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					flex: 1;
+				}
+
+				.project-content h3 {
+					margin: 0;
+					font-size: 1.1rem;
+					color: #4A8028;
+				}
+
+				.project-content p {
+					font-size: 0.9rem;
+					color: #444;
+					margin: 0.4em 0;
+				}
+
+				.fun-dropdown {
+					margin-top: 1em;
+					padding: 0.8em;
+					border: 1px solid #e6ecca;
+					border-radius: 8px;
+					background-color: #fcfcfc;
+					font-family: 'Courier New', monospace;
+					box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.03);
+					transition: background-color 0.2s ease;
+				}
+
+				.fun-dropdown summary {
+					cursor: pointer;
+					font-weight: bold;
+					font-size: 1rem;
+					color: #4A8028;
+					list-style: none;
+				}
+
+				.fun-dropdown summary::-webkit-details-marker {
+					display: none;
+				}
+
+				.fun-dropdown p {
+					margin-top: 0.5em;
+					font-size: 0.9rem;
+					color: #444;
+					padding-left: 0.5em;
+				}
+
   
 			</style>
 		</section>
