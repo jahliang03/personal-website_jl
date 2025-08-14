@@ -38,27 +38,34 @@
     h1, h2, h3 {
       margin: 0;
       color: #87d29d;
+      font-family: 'Inter', sans-serif;
     }
 
     /* ------------------------- */
-    /* Navbar */
+    /* Header: Title + Navbar */
     /* ------------------------- */
-    #my-react-root nav {
+    #header-container {
       display: flex;
-      justify-content: center;
-      gap: 1em;
-      background:#e6d6f2 ;
-      padding: 1em 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      border-radius: 0 0 20px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
     }
 
+    #title-image {
+      max-width: 500px;
+      width: auto;
+      height: auto;
+      margin-left: 5rem;
+      margin-top: 2rem;
+    }
+
+    /* ------------------------- */
+    /* Navbar Buttons */
+    /* ------------------------- */
     .nav-btn {
       background: #fff;
-      color: #e6d6f2;
+      color: #c6c0fa;
       border: none;
       padding: 0.7em 1.2em;
       border-radius: 50px;
@@ -78,16 +85,6 @@
     /* ------------------------- */
     /* Hero Section */
     /* ------------------------- */
-    #title {
-      font-family: 'Oleo Script', cursive;
-      font-size: 3rem;
-      font-weight: bold;
-      color: #87d29d;
-      text-align: center;
-      margin: 2rem 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-
     .flex-row {
       display: flex;
       flex-wrap: wrap;
@@ -96,21 +93,22 @@
       margin: auto;
       padding: 2rem 1rem;
       justify-content: center;
+      align-items: flex-start;
     }
 
     .image-wrapper {
-      flex: 1 1 300px;
-      max-width: 350px;
-      background: linear-gradient(145deg, #c6c0fa,  #c6c0fa);
+      display: inline-block;
+      background: linear-gradient(145deg, #c6c0fa, #c6c0fa);
       padding: 0.5rem;
       border-radius: 50px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     .my-photo {
-      width: 100%;
-      border-radius: 50px;
       display: block;
+      max-width: 350px;
+      height: auto;
+      border-radius: 50px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -124,6 +122,7 @@
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      align-items: center; /* centers all sections */
     }
 
     /* ------------------------- */
@@ -135,6 +134,8 @@
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      max-width: 600px; /* centers content nicely */
     }
 
     .section-card:hover {
@@ -143,7 +144,7 @@
     }
 
     .formatted-paragraph {
-      font-family: 'Courier New', monospace;
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
       white-space: pre-wrap;
     }
@@ -155,6 +156,7 @@
       display: flex;
       gap: 1em;
       margin-top: 1rem;
+      justify-content: center; /* center social icons */
     }
 
     .social-icon {
@@ -176,6 +178,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
+      justify-items: center; /* centers each project card */
     }
 
     .project-card {
@@ -186,6 +189,8 @@
       display: flex;
       flex-direction: column;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      max-width: 280px;
     }
 
     .project-card:hover {
@@ -210,7 +215,7 @@
       color: #fff;
       padding: 0.6em 1.2em;
       border-radius: 50px;
-      font-family: 'Courier New', monospace;
+      font-family: 'Inter', sans-serif;
       font-weight: bold;
       transition: background 0.3s ease, transform 0.2s ease;
     }
@@ -230,6 +235,8 @@
       margin-top: 1rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: all 0.2s ease;
+      width: 100%;
+      max-width: 600px; /* match section-card */
     }
 
     .fun-dropdown summary {
@@ -253,25 +260,27 @@
     /* Responsive */
     /* ------------------------- */
     @media (max-width: 900px) {
-      .flex-row {
+      #header-container {
         flex-direction: column;
         align-items: center;
       }
 
       .text-column {
         max-width: 100%;
+        align-items: center;
       }
     }
-
   </style>
 </head>
 
 <body>
   <main id="content">
 
-    <!-- Hero & Navbar -->
-    <div id="title">Jasmine Liang</div>
-    <div id="my-react-root"></div>
+    <!-- Header: Title + Navbar -->
+    <div id="header-container">
+      <img id="title-image" src="./assets/title.png" alt="Jasmine Liang" />
+      <div id="my-react-root"></div>
+    </div>
 
     <div class="flex-row">
       <!-- Image -->
@@ -322,7 +331,7 @@ In my free time, I enjoy drawing, painting, exploring cafes, making matcha, goin
             </div>
 
             <div class="project-card">
-              <img src="./assets/SaveryLogo.png" alt="Savery" class="project-img">
+              <img src="./assets/SaveryLogo.png" alt="Savery Application" class="project-img">
               <div class="project-content">
                 <h3>Savery</h3>
                 <p>Google Solution Challenge project. Mobile app for food waste management using Flutter, Firebase & Google Maps API.</p>
@@ -331,7 +340,7 @@ In my free time, I enjoy drawing, painting, exploring cafes, making matcha, goin
             </div>
 
             <div class="project-card">
-              <img src="./assets/seasonal-worlds.png" alt="Seasonal Grid Worlds" class="project-img">
+              <img src="./assets/DECK.png" alt="DECK Application" class="project-img">
               <div class="project-content">
                 <h3>DECK</h3>
                 <p>Digital closet app generating outfits from weather conditions. Built with Flutter, SQLite, and Firebase authentication.</p>
@@ -368,21 +377,27 @@ In my free time, I enjoy drawing, painting, exploring cafes, making matcha, goin
     function Navbar() {
       const navStyle = {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         gap: '1em',
-        padding: '1em 0',
-        backgroundColor: '#c6c0fa',
-        borderRadius: '0 0 20px 20px',
-        boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        padding: 0,
       };
+
+      const buttonContainerStyle = {
+        display: 'flex',
+        gap: '1em',
+        backgroundColor: '#c6c0fa',
+        padding: '0.5em 1em',
+        borderRadius: '50px',
+        boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+      };
+
       const buttonStyle = {
         backgroundColor: '#fff',
-        color:  '#c6c0fa',
+        color: '#c6c0fa',
         border: 'none',
-        padding: '0.7em 1.2em',
+        padding: '1em 2em',
         borderRadius: '50px',
         fontFamily: "'Press Start 2P', monospace",
         fontSize: '0.7em',
@@ -397,12 +412,33 @@ In my free time, I enjoy drawing, painting, exploring cafes, making matcha, goin
         if(target) target.scrollIntoView({behavior: 'smooth'});
       };
 
+      const handleMouseEnter = (e) => {
+        e.target.style.transform = 'translateY(-2px) scale(1.05)';
+        e.target.style.background = '#f8f9fa';
+        e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+      };
+
+      const handleMouseLeave = (e) => {
+        e.target.style.transform = 'none';
+        e.target.style.background = '#fff';
+        e.target.style.boxShadow = '0 2px 6px rgba(0,0,0,0.1)';
+      };
+
       return (
         <nav style={navStyle}>
-          <button style={buttonStyle} onClick={() => handleNav('about')}>About</button>
-          <button style={buttonStyle} onClick={() => handleNav('socials')}>Socials</button>
-          <button style={buttonStyle} onClick={() => handleNav('projects')}>Projects</button>
-          <button style={buttonStyle} onClick={() => handleNav('fun')}>Fun</button>
+          <div style={buttonContainerStyle}>
+            {['about', 'socials', 'projects', 'fun'].map((id) => (
+              <button
+                key={id}
+                style={buttonStyle}
+                onClick={() => handleNav(id)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                {id.charAt(0).toUpperCase() + id.slice(1)}
+              </button>
+            ))}
+          </div>
         </nav>
       );
     }
