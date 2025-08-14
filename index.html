@@ -14,9 +14,6 @@
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-  <!-- Custom JS -->
-  <script src="./js/experiment.js" defer></script>
-
   <style>
     /* ------------------------- */
     /* Global */
@@ -85,15 +82,14 @@
     /* ------------------------- */
     /* Hero Section */
     /* ------------------------- */
-    .flex-row {
+    .hero-container {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem auto;
       gap: 2rem;
-      max-width: 1200px;
-      margin: auto;
-      padding: 2rem 1rem;
-      justify-content: center;
-      align-items: flex-start;
+      max-width: 900px;
+      padding: 0 1rem;
     }
 
     .image-wrapper {
@@ -117,17 +113,6 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
-    .text-column {
-      flex: 2 1 500px;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      align-items: center; /* centers all sections */
-    }
-
-    /* ------------------------- */
-    /* Sections */
-    /* ------------------------- */
     .section-card {
       background: #fbfbfa;
       padding: 2rem;
@@ -135,7 +120,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
-      max-width: 600px; /* centers content nicely */
+      max-width: 700px;
     }
 
     .section-card:hover {
@@ -156,7 +141,7 @@
       display: flex;
       gap: 1em;
       margin-top: 1rem;
-      justify-content: center; /* center social icons */
+      justify-content: center;
     }
 
     .social-icon {
@@ -175,10 +160,10 @@
     /* Projects */
     /* ------------------------- */
     .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 2rem;
-      justify-items: center; /* centers each project card */
+      align-items: center;
     }
 
     .project-card {
@@ -190,7 +175,7 @@
       flex-direction: column;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
-      max-width: 280px;
+      max-width: 400px;
     }
 
     .project-card:hover {
@@ -236,7 +221,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: all 0.2s ease;
       width: 100%;
-      max-width: 600px; /* match section-card */
+      max-width: 700px;
     }
 
     .fun-dropdown summary {
@@ -264,11 +249,6 @@
         flex-direction: column;
         align-items: center;
       }
-
-      .text-column {
-        max-width: 100%;
-        align-items: center;
-      }
     }
   </style>
 </head>
@@ -282,94 +262,89 @@
       <div id="my-react-root"></div>
     </div>
 
-    <div class="flex-row">
+    <div class="hero-container">
       <!-- Image -->
       <div class="image-wrapper">
         <img class="my-photo" src="./assets/jasmine.jpeg" alt="Jasmine Liang">
       </div>
 
-      <!-- Text Content -->
-      <div class="text-column">
-        <!-- About -->
-        <div class="section-card" id="about">
-          <h2>About Me</h2>
-          <pre class="formatted-paragraph">
+      <!-- About Me -->
+      <div class="section-card" id="about">
+        <h2>About Me</h2>
+        <pre class="formatted-paragraph">
 Hello! I’m Jasmine Liang, a recent graduate from the University of California, Santa Cruz with a B.Sc. in Computer Science: Game Design and a minor in Technology & Information Management.
 I love creating interactive systems in Unity, leading frontend projects in Flutter & React, and building data visualization tools.
 
 In my free time, I enjoy drawing, painting, exploring cafes, making matcha, going to the gym, and watching Korean dramas or anime.
-          </pre>
+        </pre>
+      </div>
+
+      <!-- Socials -->
+      <div class="section-card" id="socials">
+        <h2>Let's Connect!</h2>
+        <div class="link-buttons">
+          <a href="https://www.linkedin.com/in/jasmine-liang-1b08b6221/" target="_blank">
+            <img src="./assets/linkedinicon.jpg" alt="LinkedIn" class="social-icon" />
+          </a>
+          <a href="https://github.com/jahliang03/" target="_blank">
+            <img src="./assets/github.jpg" alt="GitHub" class="social-icon" />
+          </a>
+          <a href="mailto:jahliang03@gmail.com">
+            <img src="./assets/email.png" alt="Email" class="social-icon" />
+          </a>
         </div>
+      </div>
 
-        <!-- Socials -->
-        <div class="section-card" id="socials">
-          <h2>Let's Connect!</h2>
-          <div class="link-buttons">
-            <a href="https://www.linkedin.com/in/jasmine-liang-1b08b6221/" target="_blank">
-              <img src="./assets/linkedinicon.jpg" alt="LinkedIn" class="social-icon" />
-            </a>
-            <a href="https://github.com/jahliang03/" target="_blank">
-              <img src="./assets/github.jpg" alt="GitHub" class="social-icon" />
-            </a>
-            <a href="mailto:jahliang03@gmail.com">
-              <img src="./assets/email.png" alt="Email" class="social-icon" />
-            </a>
-          </div>
-        </div>
-
-        <!-- Projects -->
-        <div class="section-card" id="projects">
-          <h2>Projects</h2>
-          <div class="project-grid">
-            <div class="project-card">
-              <img src="./assets/diceyDecisions.png" alt="Dicey Decisions" class="project-img">
-              <div class="project-content">
-                <h3>Dicey Decisions</h3>
-                <p>Multiplayer board game on Steam. Implemented card systems & backend for player stats and reputation.</p>
-                <a href="https://store.steampowered.com/app/3733760/Dicey_Decisions/?beta=0" target="_blank" class="link-btn">View Project</a>
-              </div>
-            </div>
-
-            <div class="project-card">
-              <img src="./assets/SaveryLogo.png" alt="Savery Application" class="project-img">
-              <div class="project-content">
-                <h3>Savery</h3>
-                <p>Google Solution Challenge project. Mobile app for food waste management using Flutter, Firebase & Google Maps API.</p>
-                <a href="https://github.com/asarwath687/foodWaste" target="_blank" class="link-btn">View Project</a>
-              </div>
-            </div>
-
-            <div class="project-card">
-              <img src="./assets/DECK.png" alt="DECK Application" class="project-img">
-              <div class="project-content">
-                <h3>DECK</h3>
-                <p>Digital closet app generating outfits from weather conditions. Built with Flutter, SQLite, and Firebase authentication.</p>
-                <a href="https://github.com/KevinISun/DECK" target="_blank" class="link-btn">View Project</a>
-              </div>
+      <!-- Projects -->
+      <div class="section-card" id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <img src="./assets/diceyDecisions.png" alt="Dicey Decisions" class="project-img">
+            <div class="project-content">
+              <h3>Dicey Decisions</h3>
+              <p>Multiplayer board game on Steam. Implemented card systems & backend for player stats and reputation.</p>
+              <a href="https://store.steampowered.com/app/3733760/Dicey_Decisions/?beta=0" target="_blank" class="link-btn">View Project</a>
             </div>
           </div>
-        </div>
 
-        <!-- Fun Things -->
-        <div class="section-card" id="fun">
-          <h2>Fun Things</h2>
-          <details class="fun-dropdown">
-            <summary>Drawings</summary>
-            <p>I love drawing and journaling in my free time. Here are some recent entries in my sketchbook! </p>
-          </details>
-          <details class="fun-dropdown">
-            <summary> Cafe & Matcha Diary</summary>
-            <p>With my free time, I love exploring cute cafes, here are some unique cafes with drinks that I've been loving recently!</p>
-          </details>
-          <details class="fun-dropdown">
-            <summary>Random Generators</summary>
-            <p>Some experimental creative coding projects and random generators I built for fun!</p>
-          </details>
-        </div>
+          <div class="project-card">
+            <img src="./assets/SaveryLogo.png" alt="Savery Application" class="project-img">
+            <div class="project-content">
+              <h3>Savery</h3>
+              <p>Google Solution Challenge project. Mobile app for food waste management using Flutter, Firebase & Google Maps API.</p>
+              <a href="https://github.com/asarwath687/foodWaste" target="_blank" class="link-btn">View Project</a>
+            </div>
+          </div>
 
+          <div class="project-card">
+            <img src="./assets/DECK.png" alt="DECK Application" class="project-img">
+            <div class="project-content">
+              <h3>DECK</h3>
+              <p>Digital closet app generating outfits from weather conditions. Built with Flutter, SQLite, and Firebase authentication.</p>
+              <a href="https://github.com/KevinISun/DECK" target="_blank" class="link-btn">View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fun Things -->
+      <div class="section-card" id="fun">
+        <h2>Fun Things</h2>
+        <details class="fun-dropdown">
+          <summary>Drawings</summary>
+          <p>I love drawing and journaling in my free time. Here are some recent entries in my sketchbook! </p>
+        </details>
+        <details class="fun-dropdown">
+          <summary>Cafe & Matcha Diary</summary>
+          <p>With my free time, I love exploring cute cafes, here are some unique cafes with drinks that I've been loving recently!</p>
+        </details>
+        <details class="fun-dropdown">
+          <summary>Random Generators</summary>
+          <p>Some experimental creative coding projects and random generators I built for fun!</p>
+        </details>
       </div>
     </div>
-
   </main>
 
   <!-- React Navbar Script -->
