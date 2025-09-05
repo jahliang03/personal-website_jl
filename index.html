@@ -16,7 +16,12 @@
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
   <style>
-  
+    :root{
+      /* scale to wider displays nicely */
+      --content-max: min(92vw, 1400px);
+      --card-max:    min(92vw, 1100px);
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       color: #333;
@@ -24,24 +29,21 @@
       padding: 0;
       scroll-behavior: smooth;
 
-      /* Full-page background image */
       background-image: url('./assets/bg.jpeg');
-      background-size: cover;          /* fill screen properly */
-      background-position: center;     /* keep subject centered */
-      background-attachment: fixed;    /* parallax-style fixed bg */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
-    /* Soft overlay to make bg more transparent without dimming content */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: rgba(255, 255, 255, 0.6); /* adjust 0.6 for more/less fade */
+      background: rgba(255, 255, 255, 0.6);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Ensure page content sits above overlay */
     #content { position: relative; z-index: 1; }
 
     a { text-decoration: none; color: inherit; }
@@ -57,26 +59,27 @@
     }
 
     /* ------------------------- */
-    /* Header: Title + Navbar */
+    /* Header: Title + Navbar (wider & cleaner) */
     /* ------------------------- */
     #header-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1rem;
+      gap: 1rem;
+      padding: 0.75rem 2rem;
       flex-wrap: wrap;
+      max-width: var(--content-max);
+      margin-inline: auto;
     }
     #title-image {
-      max-width: 400px;
-      width: auto;
+      max-width: clamp(360px, 35vw, 540px);
+      width: 100%;
       height: auto;
-      margin-left: 1rem;
-      margin-top: 0.1rem;
-      margin-right: 10rem
+      margin: 0 2rem 0 0; 
     }
 
     /* ------------------------- */
-    /* Navbar Buttons */
+    /* Navbar Buttons (default class kept if you reuse elsewhere) */
     /* ------------------------- */
     .nav-btn {
       background: #fff;
@@ -97,35 +100,33 @@
     }
 
     /* ------------------------- */
-    /* Hero Section (no background here now) */
+    /* Main content — WIDER */
     /* ------------------------- */
     .hero-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 0.5rem auto;
-      gap: 2rem;
-      max-width: 1000px;
-      padding: 0.5rem;
-      /* removed background so body bg shows through */
+      margin: 0.25rem auto 1.5rem;
+      gap: 1.5rem;
+      max-width: var(--content-max);
+      width: 100%;
+      padding: 0.75rem;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       background: transparent;
     }
     .image-wrapper {
       display: inline-block;
       background: linear-gradient(145deg, #c6c0fa, #c6c0fa);
-      padding: 0.5rem;
+      padding: 0.6rem;
       border-radius: 50px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     .my-photo {
       display: block;
-      max-width: 350px;
+      max-width: clamp(320px, 30vw, 520px);
       height: auto;
       border-radius: 50px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-      /* Sharper rendering hint for <img> */
       image-rendering: -webkit-optimize-contrast;
       image-rendering: crisp-edges;
     }
@@ -133,18 +134,18 @@
 
     .section-card {
       background: #fbfbfa;
-      padding: 2rem;
+      padding: 1.4rem;
       border-radius: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
-      max-width: 700px;
+      max-width: var(--card-max);  /* wider cards */
     }
-    .section-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    .section-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
 
     .formatted-paragraph { font-family: 'Inter', sans-serif; line-height: 1.6; white-space: pre-wrap; }
 
-    .link-buttons { display: flex; gap: 1em; margin-top: 1rem; justify-content: center; }
+    .link-buttons { display: flex; gap: 1.1em; margin-top: 0.9rem; justify-content: center; flex-wrap: wrap; }
     .social-icon {
       width: 60px; height: 60px; border-radius: 12px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -153,25 +154,49 @@
     }
     .social-icon:hover { transform: scale(1.15); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 
-    .project-grid { display: flex; flex-direction: column; gap: 2rem; align-items: center; }
-    .project-card {
-      background: #fff; border-radius: 20px; overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease; width: 100%; max-width: 400px;
+    /* Projects: widen via CSS grid */
+    .project-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+      justify-items: center;
     }
-    .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
-    .project-img { width: 100%; height: 200px; object-fit: cover; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+    @media (min-width: 900px) {
+      .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1200px) {
+      .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      max-width: 520px; /* wider cards on large screens */
+    }
+    .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+    .project-img {
+      width: 100%;
+      height: clamp(220px, 18vw, 300px);
+      object-fit: cover;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
     .project-content { padding: 1rem; }
     .link-btn {
-      display: inline-block; margin-top: 1rem; background: #c6c0fa; color: #fff;
+      display: inline-block; margin-top: 0.9rem; background: #c6c0fa; color: #fff;
       padding: 0.6em 1.2em; border-radius: 50px; font-family: 'Inter', sans-serif;
       font-weight: bold; transition: background 0.3s ease, transform 0.2s ease;
     }
     .link-btn:hover { background: #a29bfe; transform: scale(1.05); }
 
-    /* ------------------------- */
-    /* Fun Things — Instagram-style */
-    /* ------------------------- */
+    /* Fun Things — wider galleries */
     .fun-tabs {
       display: flex;
       gap: 0.6rem;
@@ -194,13 +219,16 @@
     .fun-tab.active { background: #c6c0fa; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 
     .gallery-grid {
-      margin-top: 1.25rem;
+      margin-top: 1rem;
       display: grid;
       grid-template-columns: repeat(1, minmax(0, 1fr));
-      gap: 1.25rem;
+      gap: 1.1rem;
+      width: 100%;
     }
-    @media (min-width: 640px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 640px)  { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px)  { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1400px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (min-width: 1800px) { .gallery-grid { grid-template-columns: repeat(5, 1fr); } }
 
     .post-card {
       background: #fff;
@@ -240,10 +268,15 @@
     }
 
     /* ------------------------- */
-    /* Responsive */
+    /* Responsive header stacking */
     /* ------------------------- */
     @media (max-width: 900px) {
-      #header-container { flex-direction: column; align-items: center; }
+      #header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      #title-image { margin: 0; }
     }
   </style>
 </head>
@@ -269,10 +302,9 @@
         <pre class="formatted-paragraph">
 Hello! I’m Jasmine Liang and welcome to my website! I had a lot of fun putting this page together as this is my digital playground of sorts. 
 
-A little more about myself, I'm a recent graduate from the University of California, Santa Cruz with a B.S. in Computer Science and a minor in Technology & Information Management.
-As you can see, I love being creative both in code and in life! I've had numerous experiences building engaging interactive systems in Unity, led/built multiple development projects in Flutter & React, and building data analytics/visualization tools with Python!
+A little more about myself, I'm a recent graduate from the University of California, Santa Cruz with a bachelors in Computer Science and a minor in Technology & Information Management. As you can see, I love being creative both in code and in life! I've had numerous experiences building engaging interactive systems in Unity, led/built multiple development projects in Flutter & React, and building data analytics/visualization tools with Python!
 
-In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thriller/horror movies! Feel free to message me if you want some favorite Bay Area cafe recomendations, have any movie/show recomendations, or want to connect professionally!  
+In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thriller/horror movies! Feel free to message me if you want some Bay Area cafe recomendations, have any movie/show recomendations, or want to connect professionally!  
         </pre>
       </div>
 
@@ -357,7 +389,7 @@ In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thril
         display: 'flex',
         gap: '1em',
         backgroundColor: '#c6c0fa',
-        padding: '0.5em 0.5em',
+        padding: '0.5em 0.75em',
         borderRadius: '50px',
         boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
       };
@@ -411,7 +443,7 @@ In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thril
     root.render(<Navbar />);
   </script>
 
-  <!-- Fun Things logic (posts per tab, Instagram-style cards) -->
+  <!-- Fun Things logic -->
   <script>
     const GALLERY = {
       drawings: [
@@ -464,7 +496,6 @@ In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thril
       });
     }
 
-    // Tab switching
     tabEls.forEach(btn => {
       btn.addEventListener('click', () => {
         const cat = btn.dataset.cat;
@@ -473,7 +504,6 @@ In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thril
       });
     });
 
-    // Default load
     renderGallery('drawings');
   </script>
 </body>
