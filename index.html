@@ -18,16 +18,34 @@
 
   <style>
     /* ------------------------- */
-    /* Global */
+    /* Global (now with full-page background) */
     /* ------------------------- */
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #f6f6f3, #ede6f1);
       color: #333;
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
+
+      /* Full-page background image */
+      background-image: url('./assets/bg.jpeg');
+      background-size: cover;          /* fill screen properly */
+      background-position: center;     /* keep subject centered */
+      background-attachment: fixed;    /* parallax-style fixed bg */
     }
+
+    /* Soft overlay to make bg more transparent without dimming content */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.6); /* adjust 0.6 for more/less fade */
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ensure page content sits above overlay */
+    #content { position: relative; z-index: 1; }
 
     a { text-decoration: none; color: inherit; }
 
@@ -56,11 +74,11 @@
       width: auto;
       height: auto;
       margin-left: 4rem;
-      margin-top: 2rem;
+      margin-top: 0.1rem;
     }
 
     /* ------------------------- */
-    /* Navbar Buttons (reference) */
+    /* Navbar Buttons */
     /* ------------------------- */
     .nav-btn {
       background: #fff;
@@ -81,20 +99,19 @@
     }
 
     /* ------------------------- */
-    /* Hero Section */
+    /* Hero Section (no background here now) */
     /* ------------------------- */
     .hero-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 2rem auto;
+      margin: 0.5rem auto;
       gap: 2rem;
       max-width: 1000px;
-      padding: 2rem;
-      background-image: url('./assets/bg.jpeg');
-      background-size: cover;
-      background-position: center;
+      padding: 0.5rem;
+      /* removed background so body bg shows through */
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      background: transparent;
     }
     .image-wrapper {
       display: inline-block;
@@ -109,6 +126,10 @@
       height: auto;
       border-radius: 50px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      /* Sharper rendering hint for <img> */
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
     }
     .my-photo:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
@@ -129,6 +150,8 @@
     .social-icon {
       width: 60px; height: 60px; border-radius: 12px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
     }
     .social-icon:hover { transform: scale(1.15); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 
@@ -139,7 +162,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease; width: 100%; max-width: 400px;
     }
     .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
-    .project-img { width: 100%; height: 200px; object-fit: cover; }
+    .project-img { width: 100%; height: 200px; object-fit: cover; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
     .project-content { padding: 1rem; }
     .link-btn {
       display: inline-block; margin-top: 1rem; background: #c6c0fa; color: #fff;
@@ -163,7 +186,7 @@
       border: none;
       padding: 0.7em 1.2em;
       border-radius: 50px;
-      font-family: 'Pinyon Script', cursive;  /* match request */
+      font-family: 'Pinyon Script', cursive;
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.25s ease;
@@ -192,9 +215,11 @@
     }
     .post-img {
       width: 100%;
-      aspect-ratio: 1 / 1;   /* square, like Instagram */
+      aspect-ratio: 1 / 1;
       object-fit: cover;
       display: block;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
     }
     .post-body {
       padding: 0.75rem 0.9rem 1rem;
@@ -202,10 +227,7 @@
       flex-direction: column;
       gap: 0.4rem;
     }
-    .post-caption {
-      font-size: 0.95rem;
-      color: #444;
-    }
+    .post-caption { font-size: 0.95rem; color: #444; }
     .post-meta {
       display: flex;
       justify-content: space-between;
@@ -341,12 +363,12 @@ In my free time, I enjoy drawing, painting, exploring cafes, making matcha, goin
       const buttonStyle = {
         backgroundColor: '#fff',
         color: '#c6c0fa',
-        border: '2px solid #c6c0fa',          // gives definition + bold look
-        padding: '0.6em 2em',               // a bit narrower vertically, wider horizontally
+        border: '2px solid #c6c0fa',
+        padding: '0.6em 2em',
         borderRadius: '50px',
         fontFamily: "'Pinyon Script', cursive",
-        fontSize: '1.3rem',                   // larger, lets the curves breathe
-        fontWeight: '600',                    // stronger presence
+        fontSize: '1.3rem',
+        fontWeight: '600',
         cursor: 'pointer',
         transition: 'all 0.3s ease',
         boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
