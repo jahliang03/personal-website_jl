@@ -7,7 +7,6 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
 
@@ -17,9 +16,7 @@
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
   <style>
-    /* ------------------------- */
-    /* Global (now with full-page background) */
-    /* ------------------------- */
+  
     body {
       font-family: 'Inter', sans-serif;
       color: #333;
@@ -66,15 +63,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      padding: 1rem 1rem;
       flex-wrap: wrap;
     }
     #title-image {
-      max-width: 550px;
+      max-width: 400px;
       width: auto;
       height: auto;
-      margin-left: 4rem;
+      margin-left: 1rem;
       margin-top: 0.1rem;
+      margin-right: 10rem
     }
 
     /* ------------------------- */
@@ -87,7 +85,7 @@
       padding: 0.7em 1.2em;
       border-radius: 50px;
       font-family: 'Pinyon Script', cursive;
-      font-size: 0.9em;
+      font-size: 2em;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -187,7 +185,7 @@
       padding: 0.7em 1.2em;
       border-radius: 50px;
       font-family: 'Pinyon Script', cursive;
-      font-size: 1rem;
+      font-size: 1.2rem;
       cursor: pointer;
       transition: all 0.25s ease;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -255,7 +253,7 @@
 
     <!-- Header: Title + Navbar -->
     <div id="header-container">
-      <img id="title-image" src="./assets/title.png" alt="Jasmine Liang" />
+      <img id="title-image" src="./assets/paperTitle.png" alt="Jasmine Liang" />
       <div id="my-react-root"></div>
     </div>
 
@@ -305,7 +303,6 @@ In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thril
               <p>Multiplayer board game on Steam. Implemented card systems & backend for player stats and reputation.</p>
               <a href="https://store.steampowered.com/app/3733760/Dicey_Decisions/?beta=0" target="_blank" class="link-btn">View Project</a>
             </div>
-          </div>
 
           <div class="project-card">
             <img src="./assets/SaveryLogo.png" alt="Savery Application" class="project-img">
@@ -359,7 +356,7 @@ In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thril
         display: 'flex',
         gap: '1em',
         backgroundColor: '#c6c0fa',
-        padding: '0.5em 1em',
+        padding: '0.5em 0.5em',
         borderRadius: '50px',
         boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
       };
