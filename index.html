@@ -17,7 +17,7 @@
 
   <style>
     :root{
-      /* scale to wider displays nicely */
+      /* scales nicely on wider displays */
       --content-max: min(92vw, 1400px);
       --card-max:    min(92vw, 1100px);
     }
@@ -50,7 +50,7 @@
 
     h1, h2, h3 {
       margin: 0;
-      color: #87d29d;
+      color: #7fc594;
       font-family: 'Pinyon Script', cursive;
       font-size: clamp(1rem, 3vw, 2.2rem);
       line-height: 1.1;
@@ -58,8 +58,10 @@
       margin-bottom: 0.75rem;
     }
 
+  
+
     /* ------------------------- */
-    /* Header: Title + Navbar (wider & cleaner) */
+    /* Header: Title + Navbar */
     /* ------------------------- */
     #header-container {
       display: flex;
@@ -75,32 +77,11 @@
       max-width: clamp(360px, 35vw, 540px);
       width: 100%;
       height: auto;
-      margin: 0 2rem 0 0; 
+      margin: 0 2rem 0 0;
     }
 
     /* ------------------------- */
-    /* Navbar Buttons (default class kept if you reuse elsewhere) */
-    /* ------------------------- */
-    .nav-btn {
-      background: #fff;
-      color: #c6c0fa;
-      border: none;
-      padding: 0.7em 1.2em;
-      border-radius: 50px;
-      font-family: 'Pinyon Script', cursive;
-      font-size: 2em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .nav-btn:hover {
-      transform: translateY(-2px) scale(1.05);
-      background: #f8f9fa;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    /* ------------------------- */
-    /* Main content — WIDER */
+    /* Main content */
     /* ------------------------- */
     .hero-container {
       display: flex;
@@ -114,23 +95,42 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       background: transparent;
     }
+
+    /* === About row: image left, text right === */
+    .about-row {
+      width: 100%;
+      max-width: var(--card-max);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem;
+      align-items: stretch;
+    }
+    .about-photo {
+      width: clamp(240px, 28vw, 420px);
+    }
+
+    /* Reusable image frame */
     .image-wrapper {
       display: inline-block;
       background: linear-gradient(145deg, #c6c0fa, #c6c0fa);
       padding: 0.6rem;
-      border-radius: 50px;
+      border-radius: 30px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      height: 100%;
     }
     .my-photo {
       display: block;
-      max-width: clamp(320px, 30vw, 520px);
-      height: auto;
-      border-radius: 50px;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      border-radius: 22px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       image-rendering: -webkit-optimize-contrast;
       image-rendering: crisp-edges;
     }
-    .my-photo:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .my-photo:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
     .section-card {
       background: #fbfbfa;
@@ -139,22 +139,63 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
-      max-width: var(--card-max);  /* wider cards */
+      max-width: var(--card-max);
     }
     .section-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    
+    /* Make the Socials card transparent (no box or hover effects) */
+    #socials.section-card {
+      background: transparent;
+      box-shadow: none;
+      border: 0;
+      padding: 1rem 0;        /* keep a little vertical spacing */
+    }
+
+    #socials.section-card:hover {
+      transform: none;        /* cancel the lift-on-hover from .section-card:hover */
+      box-shadow: none;
+    }
+
 
     .formatted-paragraph { font-family: 'Inter', sans-serif; line-height: 1.6; white-space: pre-wrap; }
 
-    .link-buttons { display: flex; gap: 1.1em; margin-top: 0.9rem; justify-content: center; flex-wrap: wrap; }
-    .social-icon {
-      width: 60px; height: 60px; border-radius: 12px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
+    /* === Socials alignment === */
+    #socials h2 { 
+      text-align: center; 
+      color: #4dac6a;
     }
-    .social-icon:hover { transform: scale(1.15); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .link-buttons {
+      display: flex;
+      gap: 0.9em;
+      margin-top: 0.9rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .link-buttons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: #fff;
+    }
+    .link-buttons a:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    .social-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-    /* Projects: widen via CSS grid */
+    /* Projects */
     .project-grid {
       width: 100%;
       display: grid;
@@ -178,7 +219,7 @@
       flex-direction: column;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
-      max-width: 520px; /* wider cards on large screens */
+      max-width: 520px;
     }
     .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
     .project-img {
@@ -196,10 +237,38 @@
     }
     .link-btn:hover { background: #a29bfe; transform: scale(1.05); }
 
-    /* Fun Things — wider galleries */
+    /* === Fun row: image left, text right (like About) === */
+    .fun-row {
+      width: 100%;
+      max-width: var(--card-max);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.1rem;
+      align-items: stretch;
+    }
+
+    .fun-photo .image-wrapper {
+      background: transparent;
+      overflow: hidden;
+      box-shadow: none;
+      width: clamp(450px, 28vw, 220px); /* ↓ tweak these numbers to taste */
+    }
+
+    .fun-photo .my-photo {
+      border-radius: inherit; /* match wrapper curve exactly */
+      width: 100%;
+      height: auto;          /* don't force a fixed height */
+      object-fit: contain;   /* no side-cropping */
+    }
+
+    .fun-photo .my-photo:hover {
+      box-shadow: none;     /* stop the dark outline on hover */
+    }
+
+    /* Fun Things controls/cards */
     .fun-tabs {
       display: flex;
-      gap: 0.6rem;
+      gap: 0.2rem;
       flex-wrap: wrap;
       margin-top: 0.5rem;
     }
@@ -209,7 +278,7 @@
       border: none;
       padding: 0.7em 1.2em;
       border-radius: 50px;
-      font-family: 'Pinyon Script', cursive;
+      font-family: 'Pinyon Script', cursive';
       font-size: 1.2rem;
       cursor: pointer;
       transition: all 0.25s ease;
@@ -267,9 +336,7 @@
       background: #c6c0fa; display: inline-block; margin: 0 6px;
     }
 
-    /* ------------------------- */
-    /* Responsive header stacking */
-    /* ------------------------- */
+    /* Responsive header stacking & rows */
     @media (max-width: 900px) {
       #header-container {
         flex-direction: column;
@@ -277,6 +344,12 @@
         gap: 0.5rem;
       }
       #title-image { margin: 0; }
+      .about-row { grid-template-columns: 1fr; }
+      .about-photo { width: 100%; }
+      .fun-row { grid-template-columns: 1fr; }
+      .fun-photo { width: 100%; }
+      .image-wrapper { border-radius: 24px; }
+      .my-photo { border-radius: 18px; }
     }
   </style>
 </head>
@@ -291,38 +364,28 @@
     </div>
 
     <div class="hero-container">
-      <!-- Image -->
-      <div class="image-wrapper">
-        <img class="my-photo" src="./assets/jasmine.jpeg" alt="Jasmine Liang">
-      </div>
 
-      <!-- About Me -->
-      <div class="section-card" id="about">
-        <h2>About Me (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ:</h2>
-        <pre class="formatted-paragraph">
+      <!-- About: image on the LEFT, text on the RIGHT -->
+      <div class="about-row">
+        <div class="about-photo">
+          <div class="image-wrapper">
+            <img class="my-photo" src="./assets/jasmine.jpeg" alt="Jasmine Liang">
+          </div>
+        </div>
+
+        <div class="section-card" id="about">
+          <h2>About Me (*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ:</h2>
+<pre class="formatted-paragraph">
 Hello! I’m Jasmine Liang and welcome to my website! I had a lot of fun putting this page together as this is my digital playground of sorts. 
 
 A little more about myself, I'm a recent graduate from the University of California, Santa Cruz with a bachelors in Computer Science and a minor in Technology & Information Management. As you can see, I love being creative both in code and in life! I've had numerous experiences building engaging interactive systems in Unity, led/built multiple development projects in Flutter & React, and building data analytics/visualization tools with Python!
 
 In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thriller/horror movies! Feel free to message me if you want some Bay Area cafe recomendations, have any movie/show recomendations, or want to connect professionally!  
-        </pre>
-      </div>
-
-      <!-- Socials -->
-      <div class="section-card" id="socials">
-        <h2>Let's Connect!  ⋆｡˚ ❀.𖥔 ݁ ˖  ✦  ‧₊˚ ⋅</h2>
-        <div class="link-buttons">
-          <a href="https://www.linkedin.com/in/jasmine-liang-1b08b6221/" target="_blank">
-            <img src="./assets/linkedinicon.jpeg" alt="LinkedIn" class="social-icon" />
-          </a>
-          <a href="https://github.com/jahliang03/" target="_blank">
-            <img src="./assets/github.jpeg" alt="GitHub" class="social-icon" />
-          </a>
-          <a href="mailto:liangjazz123@gmail.com">
-            <img src="./assets/email.jpeg" alt="Email" class="social-icon" />
-          </a>
+</pre>
         </div>
       </div>
+
+      
 
       <!-- Projects -->
       <div class="section-card" id="projects">
@@ -357,20 +420,45 @@ In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thril
         </div>
       </div>
 
-      <!-- Fun Things -->
-      <div class="section-card" id="fun">
-        <h2>Fun Things ʚɞ ⁺˖°❀⋆.ೃ࿔*:･</h2>
-
-        <!-- Tabs -->
-        <div class="fun-tabs">
-          <button class="fun-tab active" data-cat="drawings">Drawings</button>
-          <button class="fun-tab" data-cat="cafes">Cafe & Matcha Diary</button>
-          <button class="fun-tab" data-cat="generators">Random Generators</button>
+      <!-- Fun Things: image on the LEFT, section on the RIGHT -->
+      <div class="fun-row">
+        <div class="fun-photo">
+          <div class="image-wrapper">
+            <img class="my-photo" src="./assets/photo2.png" alt="Fun photo">
+          </div>
         </div>
 
-        <!-- Gallery -->
-        <div id="fun-gallery" class="gallery-grid"></div>
+        <div class="section-card" id="fun">
+          <h2>Fun Things ʚɞ ⁺˖°❀⋆.ೃ࿔*:･</h2>
+
+          <!-- Tabs -->
+          <div class="fun-tabs">
+            <button class="fun-tab active" data-cat="drawings">Drawings</button>
+            <button class="fun-tab" data-cat="cafes">Cafe & Matcha Diary</button>
+            <button class="fun-tab" data-cat="generators">Random Generators</button>
+          </div>
+
+          <!-- Gallery -->
+          <div id="fun-gallery" class="gallery-grid"></div>
+        </div>
       </div>
+
+      <!-- Socials -->
+      <div class="section-card" id="socials">
+        <h2>Let's Connect!  ⋆｡˚ ❀.𖥔 ݁ ˖  ✦  ‧₊˚ ⋅</h2>
+        <div class="link-buttons">
+          <a href="https://www.linkedin.com/in/jasmine-liang-1b08b6221/" target="_blank" aria-label="LinkedIn">
+            <img src="./assets/linkedinicon.jpeg" alt="LinkedIn" class="social-icon" />
+          </a>
+          <a href="https://github.com/jahliang03/" target="_blank" aria-label="GitHub">
+            <img src="./assets/github.jpeg" alt="GitHub" class="social-icon" />
+          </a>
+          <a href="mailto:liangjazz123@gmail.com" aria-label="Email">
+            <img src="./assets/email.jpeg" alt="Email" class="social-icon" />
+          </a>
+        </div>
+      </div>
+
     </div>
   </main>
 
@@ -424,7 +512,7 @@ In my freetime, I enjoy drawing, journaling, exploring cafes, and watching thril
       return (
         <nav style={navStyle}>
           <div style={buttonContainerStyle}>
-            {['about', 'socials', 'projects', 'fun'].map((id) => (
+            {['about', 'projects', 'fun', 'socials'].map((id) => (
               <button
                 key={id}
                 style={buttonStyle}
